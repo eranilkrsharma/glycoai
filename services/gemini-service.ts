@@ -1,8 +1,16 @@
+import Constants from 'expo-constants';
 import { FoodItem } from '@/mocks/food-database';
 import { Platform } from 'react-native';
+import * as dotenv from 'dotenv';
 
-// Hardcoded API key
-const API_KEY = 'AIzaSyC20z3MwtecTJbshcxMc2IlYJ44SJo7cMM';
+// Check if the app is in development mode
+if (__DEV__) {
+  dotenv.config();
+}
+
+// Access the API key from the environment variables
+const API_KEY = __DEV__ ? process.env.GEMINI_API_KEY : Constants.expoConfig?.extra?.GEMINI_API_KEY;
+
 
 // Function to convert image URI to base64
 async function imageUriToBase64(uri: string): Promise<string> {
@@ -113,6 +121,10 @@ Format your response as a clean JSON object with these exact fields:
         max_output_tokens: 1024,
       }
     };
+
+    if (!API_KEY) {
+      throw new Error('GEMINI_API_KEY environment variable is not set.');
+    }
 
     // Make the API request - Using the newer gemini-1.5-flash model
     const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${API_KEY}`, {
@@ -357,6 +369,10 @@ Format your response as a clean JSON object with these exact fields:
         max_output_tokens: 1024,
       }
     };
+
+    if (!API_KEY) {
+      throw new Error('GEMINI_API_KEY environment variable is not set.');
+    }
 
     // Make the API request - Using the newer gemini-1.5-flash model
     const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${API_KEY}`, {
