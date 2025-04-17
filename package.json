@@ -5,7 +5,9 @@
   "scripts": {
     "start": "expo start --tunnel",
     "start-web": "expo start --web --tunnel",
-    "start-web-dev": "DEBUG=expo* expo start --web --tunnel"
+    "start-web-dev": "DEBUG=expo* expo start --web --tunnel",
+    "android": "expo run:android",
+    "ios": "expo run:ios"
   },
   "dependencies": {
     "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
@@ -13,7 +15,7 @@
     "@expo/vector-icons": "^14.0.2",
     "@react-native-async-storage/async-storage": "^2.1.2",
     "@react-navigation/native": "^7.0.0",
-    "expo": "~52.0.36",
+    "expo": "^52.0.46",
     "expo-blur": "~14.0.1",
     "expo-constants": "~17.0.7",
     "expo-dev-client": "^5.0.20",
@@ -30,6 +32,7 @@
     "expo-symbols": "~0.2.0",
     "expo-system-ui": "~4.0.6",
     "expo-web-browser": "~14.0.1",
+    "jimp": "^1.6.0",
     "lucide-react-native": "^0.475.0",
     "module-resolver": "^1.0.0",
     "nativewind": "^4.1.23",
